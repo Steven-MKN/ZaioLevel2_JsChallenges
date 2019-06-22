@@ -21,26 +21,25 @@ function firstDuplicate(array){
 console.log('First duplicate is ' + firstDuplicate([2, 1, 3, 5, 3, 2]));
 
 //Array Mode
-function arrayMode(sequence) {
-    function Element(num) {
-        var number = num;
-        var count = 0;
-    }
-
+function arrayMode(array) {
+    
     var arrOfElements = [];
-    maxNum = -1;
-    maxCount = -1;
+    var maxNum = -1;
+    var maxCount = -1;
 
-    for (i = 0; i < sequence.length; i++) {
+    for (i = 0; i < array.length; i++) {
         var isFound = false;
 
         for (j = 0; j < arrOfElements.length; j++) {
-            if (arrOfElements[j].number == sequence[i]) {
+
+            if (arrOfElements[j].number == array[i]) {
                 //if object of the curent number in sequence arr exists
+
                 arrOfElements[j].count++;
                 isFound = true;
 
                 if (arrOfElements[j].count > maxCount) {
+
                     //checks and sets new mode
                     maxNum = arrOfElements[j].number;
                     maxCount = arrOfElements[j].count;
@@ -48,8 +47,11 @@ function arrayMode(sequence) {
             }
         }
 
-        if (!isFound)
-            arrOfElements[arrOfElements.length] = new Element(sequence[i]);
+        if (!isFound){
+            arrOfElements[arrOfElements.length] = new Object();
+            arrOfElements[arrOfElements.length - 1].number = array[i];
+            arrOfElements[arrOfElements.length - 1].count = 0;
+        }
     }
 
     return maxNum;
